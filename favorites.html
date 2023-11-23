@@ -9,6 +9,7 @@
     <title>MovieStack</title>
 </head>
 <body>
+    <div id="app">
         <header class="flex flex-col h-28 place-items-center bg-amber-500 md:h-20 md:border-b md:items-center md:space-x-96 md:flex-row">
             <div class="flex flex-col place-items-center md:flex md:w-full md:p-2  md:flex-row  ">
                 <img class="w-10 h-7 rounded-xl md:w-20 md:h-20" src="https://static.vecteezy.com/system/resources/previews/008/442/149/non_2x/movie-clapperboard-icon-film-set-clapper-for-cinema-production-board-clap-for-video-clip-scene-start-lights-camera-action-on-white-background-vector.jpg" alt="popcorn">
@@ -25,13 +26,28 @@
                 <img class="w-full h-96 object-cover" src="./images/Red & White Torn Movie Facebook Cover.png" alt="favs-banner">
             </div>
             <section id="contenedor-favs" class="flex flex-wrap mx-34 m-4  gap-6 place-content-center">
-
+                <template v-if="moviesFiltradas.length > 0" v-for="movie of moviesFiltradas" >
+                    <article class="flex flex-col items-center w-64 h-78 p-2.5 border-2 bg-amber-700 rounded-lg ">
+                        <button v-on:click="favorites.includes(movie.id)?removeFavorites(movie.id):addFavorites(movie.id)" data-fav="fav" class="flex rounded-full bg-white" data-id="${objeto.id}">
+                            <svg  data-fav="fav" data-id="${objeto.id}" class="fill-current object-contain w-10 h-6" xmlns="http://www.w3.org/200 svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path data-fav="fav" data-id="${objeto.id}" d="M12 4.435c-1.989-5.399-12-4.597-12 3.568 0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-8.118-10-8.999-12-3.568z"/>
+                            </svg>
+                       </button>
+                        <img class="w-42 object-contain h-40 p-2" v-bind:src="`https://moviestack.onrender.com/static/`+movie.image">
+                        <h3 class="font-sans font-bold text-2xl text-white text-center">{{movie.title}}</h3>
+                        </br>
+                         <p class="text-center font-serif text-white p-2 line-clamp-4 hover:block">{{movie.overview}}</p>
+                         <a class="border-black bg-black text-white p-2 w-18 m-1 font-bold self-center rounded text-center" v-bind:href="`./details.html?id=`+movie.id"> See more </a>
+                 </article>
+                </template>
 
             </section>
         </main>
         <footer class="flex place-content-center bg-amber-500 h-20 border-b items-center">
             <p class=" font-mono font-bold text-2xl text-white">Laura Paredes-Cohort 52</p>
         </footer>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <script type="module" src="./js/favorites.js"></script>
+    </div>
 </body>
 </html>

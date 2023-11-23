@@ -12,6 +12,7 @@ const app = createApp({
             genres: [],
             search: "",
             select: "",
+            favorites: []
         }
     },
 
@@ -22,7 +23,8 @@ const app = createApp({
                 this.movies = data.movies
                 this.moviesFiltradas = this.movies
                 this.genres = [...new Set(this.movies.map(movie => movie.genres).flat())]
-                console.log(this.genres)
+                this.favorites = JSON.parse(localStorage.getItem("favoritas")) || []
+                
             })
             .catch(e => { console.log(e) })
     },
@@ -40,6 +42,14 @@ const app = createApp({
             this.moviesFiltradas = this.movies.filter(movie => movie.title.toLowerCase().includes(this.search.toLowerCase())
                 && movie.genres.includes(this.select))
 
+        },
+        removeFavorites(movieId){
+            this.favorites= this.favorites.filter(movie => movie != movieId)
+            localStorage.setItem("favorites" , JSON.stringify(this.favorites))
+        },
+        addFavorites(movieId){
+            this.favorites.push(movieId)
+            localStorage.setItem("favorites" , JSON.stringify(this.favorites))
         }
     }
 })
