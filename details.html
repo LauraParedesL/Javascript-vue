@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="https://cdn.pixabay.com/photo/2013/07/13/14/01/film-161952_1280.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+    <header class="flex flex-col h-28 place-items-center bg-amber-500 md:h-20 md:border-b md:items-center md:space-x-96 md:flex-row">
+        <div class="flex flex-col place-items-center md:flex md:w-full md:p-2  md:flex-row  ">
+            <img class="w-10 h-7 md:w-20 md:h-20" src="https://static.vecteezy.com/system/resources/previews/008/442/149/non_2x/movie-clapperboard-icon-film-set-clapper-for-cinema-production-board-clap-for-video-clip-scene-start-lights-camera-action-on-white-background-vector.jpg" alt="popcorn">
+       <!-- <div id="div-header" class="flex flex-col place-items-center md:flex w-full p-2">--> 
+            <h1 class="text-xl flex  font-sans md:hover:text-inherit font-bold md:text-5xl text-neutral-50 md:text-left md:items-center">MOVIESTACK</h1>
+        </div>
+        <nav class="items-center flex md:place-content-end  gap-7 font-mono font-bold md:text-2xl text-neutral-50 md:p-2">
+            <a class="text-sm hover:text-black hover:text-3xl md:text-2xl border-solid border-2 p-0.5 px-1 rounded-md hover:bg-white" href="./index.html">HOME</a>
+            <a class="text-sm hover:text-black hover:text-3xl md:text-2xl border-solid border-2 p-0.5 px-1 rounded-md hover:bg-white" href="#">MOVIES</a>
+            <a class="text-sm hover:text-black hover:text-3xl md:text-2xl border-solid border-2 p-0.5 px-1 rounded-md hover:bg-white"href="#">FAVS</a>
+        </nav>
+    </header>
+    <main class=" flex flex-col min-h-screen bg-amber-100">
+       <!-- <div> 
+            <img class="w-full h-auto" src="./images/Modern Movie Trailer Youtube Thumbnail.png" alt="banner-movies">
+        </div> -->
+        
+            <template v-if="movie">
+        <section id="cards" class="flex flex-wrap mx-34 m-4  gap-6 place-content-center">
+            
+            <article class="flex w-9/12 min-h-screen  p-4 bg-amber-700 rounded-lg">
+                <div class="flex flex-col place-items-center">
+                          <img class="w-4/5 h-3/5 p-2" v-bind:src="'https://moviestack.onrender.com/static/' + movie.image" v-bind:alt="'Image' + movie.title">
+                   <table>
+                        <tr>
+                            <td class="border-solid border-2 text-center p-2 bg-amber-200 w-56">Original Language</td>
+                            <td class="border-solid border-2 text-center p-2 bg-amber-200 w-56">{{movie.original_language}}</td>
+                        </tr>
+                        <tr>
+                            <td class="border-solid border-2 text-center p-2 bg-amber-200">Release Date</td>
+                            <td class="border-solid border-2 text-center p-2 bg-amber-200">{{movie.release_date}}</td>
+                        </tr>
+                        <tr>
+                            <td class="border-solid border-2 text-center p-2 bg-amber-200">Runtime</td>
+                            <td class="border-solid border-2 text-center p-2 bg-amber-200">{{movie.runtime}}</td>
+                        </tr>
+                        <tr>
+                            <td class="border-solid border-2 text-center p-2 bg-amber-200">status</td>
+                            <td class="border-solid border-2 text-center p-2 bg-amber-200">{{movie.status}}</td>
+                        </tr>
+                    </table>  
+                </div>
+                <div class="flex flex-col gap-6">
+                   <h3 class="font-sans font-bold text-2xl text-white ">{{movie.title}}</h3>
+                   <p class="font-serif font-bold text-white p-2">{{movie.tagline}}</p>
+                   <p class="font-serif text-white p-2">{{movie.genres}}</p>
+                   <p class="font-serif text-white w-64 p-2">{{movie.overview}}</p>
+                <table class="">
+                   <tr>
+                       <td class="border-solid border-2 text-center p-2 bg-amber-200 w-56">vote average</td>
+                       <td class="border-solid border-2 text-center p-2 bg-amber-200 w-56">{{movie.vote_average}}</td>
+                   </tr>
+                   <tr>
+                       <td class="border-solid border-2 text-center p-2 bg-amber-200 w-56">Budget</td>
+                       <td class="border-solid border-2 text-center p-2 bg-amber-200 w-56">{{movie.budget}}</td>
+                   </tr>
+                   <tr>
+                       <td class="border-solid border-2 text-center p-2 bg-amber-200 w-56">Revenue</td>
+                       <td class="border-solid border-2 text-center p-2 bg-amber-200 w-56">{{movie.revenue}}</td>
+                   </tr>
+               </table>  
+                </div> 
+            </article>
+        </template>
+
+            
+        </section>
+    </main>
+    <footer class="flex place-content-center bg-amber-500 h-20 border-b items-center">
+        <p class=" font-mono font-bold text-2xl text-white">Laura Paredes-Cohort 52</p>
+    </footer>
+</div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script  src="./js/details.js"></script>
+</body>
+</html>
